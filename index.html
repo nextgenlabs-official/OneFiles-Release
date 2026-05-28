@@ -65,6 +65,7 @@ body::after{
 @keyframes dataScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
 @keyframes shimCy{0%{background-position:200% 0}100%{background-position:-200% 0}}
 @keyframes arrowDrop{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@keyframes indusGlow{0%,100%{box-shadow:0 0 10px rgba(0,245,255,0.8),0 0 22px rgba(255,45,120,0.4),0 0 2px #fff}50%{box-shadow:0 0 20px rgba(0,245,255,1),0 0 40px rgba(255,45,120,0.7),0 0 6px #fff}}
 @keyframes rotateRing{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
 
 /* ══ NAV ══ */
@@ -494,14 +495,23 @@ nav::before{
 .mb-box p{font-family:var(--font-mono);color:var(--text2);font-size:.76rem;margin-bottom:22px;line-height:1.65;letter-spacing:.03em}
 .mb-btns{display:flex;flex-direction:column;gap:10px}
 .mbt{
-  display:block;padding:13px;font-family:var(--font-display);font-weight:700;
+  display:flex;align-items:center;padding:0;font-family:var(--font-display);font-weight:700;
   font-size:.7rem;text-align:center;text-decoration:none;border:none;cursor:pointer;
   letter-spacing:.12em;text-transform:uppercase;transition:.2s;position:relative;overflow:hidden;
+}
+.mbt .mbt-logo{
+  display:flex;align-items:center;justify-content:center;
+  padding:10px 2px 4px;height:100%;margin-top:4px;margin-left:4px;
+  flex-shrink:0;width:90px;
+}
+.mbt .mbt-label{
+  flex:1;padding:13px 20px 13px 10px;text-align:center;
 }
 .mbt::before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.2) 50%,transparent 70%);background-size:200% 100%;opacity:0;transition:.3s}
 .mbt:hover::before{opacity:1;animation:shimCy 1.5s ease-in-out}
 .mbt-p{
-  background:var(--cy);color:var(--bg);
+  background:#000;color:#fff;
+  border:1px solid rgba(0,245,255,0.5);
   clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
   box-shadow:0 0 25px rgba(0,245,255,0.45);
 }
@@ -558,6 +568,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .sb-item{font-family:var(--font-mono);font-size:.6rem;color:rgba(0,245,255,0.3);letter-spacing:.1em;display:flex;align-items:center;gap:6px}
 .sb-dot-s{width:5px;height:5px;border-radius:50%;background:var(--gr);box-shadow:0 0 6px var(--gr);animation:blink 2s ease-in-out infinite}
 .sb-dot-r{width:5px;height:5px;border-radius:50%;background:var(--mg);box-shadow:0 0 6px var(--mg)}
+
+/* ══ INDUS NAV ICON ══ */
+.indus-nav-btn{
+  display:flex;align-items:center;
+  opacity:0.85;transition:opacity .2s,filter .2s;
+  filter:drop-shadow(0 0 6px rgba(0,245,255,0.3));
+}
+.indus-nav-btn:hover{
+  opacity:1;
+  filter:drop-shadow(0 0 12px rgba(0,245,255,0.7));
+}
 </style>
 </head>
 <body>
@@ -574,7 +595,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <h3>⬇ Download OneFiles</h3>
     <p>30+ utilities. One system. Free forever.</p>
     <div class="mb-btns">
-      <a href="https://github.com/nextgenlabs-official/OneFiles-Release/releases/download/v1.1.0/onefiles.apk" class="mbt mbt-p" onclick="closeM()"><span style="display:inline-block;animation:arrowDrop 1.2s ease-in-out infinite">⬇</span>&nbsp; Download APK v1.0.0</a>
+      <a href="https://indusapp.store/xk85pzfx" class="mbt mbt-p" onclick="closeM()"><div class="mbt-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNzAiPgogIDxkZWZzPgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJjZyIgY3g9IjUwJSIgY3k9IjM1JSIgcj0iNjUlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0ZGRDAwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGRjYwMDAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImMxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjYwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRkYzMzY2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0FBMDAzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYzIiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iNjAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNDQzAwRkYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNzcwMEJCIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIENpcmNsZSBkb3QgLS0+CiAgPGNpcmNsZSBjeD0iMjIiIGN5PSI5IiByPSI4IiBmaWxsPSJ1cmwoI2NnKSIvPgogIDwhLS0gVG9wIGNoZXZyb24gLS0+CiAgPHBhdGggZD0iTTggMjAgTDIyIDM0IEwzNiAyMCBMMzEgMjAgTDIyIDI5IEwxMyAyMFoiIGZpbGw9InVybCgjYzEpIi8+CiAgPCEtLSBCb3R0b20gY2hldnJvbiAtLT4KICA8cGF0aCBkPSJNOCAzMiBMMjIgNDYgTDM2IDMyIEwzMSAzMiBMMjIgNDEgTDEzIDMyWiIgZmlsbD0idXJsKCNjMikiLz4KICA8IS0tIEluZHVzIHRleHQgLS0+CiAgPHRleHQgeD0iNDQiIHk9IjI4IiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiPkluZHVzPC90ZXh0PgogIDwhLS0gQVBQU1RPUkUgdGV4dCAtLT4KICA8dGV4dCB4PSI0NSIgeT0iNDIiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC43NSkiIGxldHRlci1zcGFjaW5nPSIyLjUiPkFQUFNUT1JFPC90ZXh0Pgo8L3N2Zz4=" style="height:44px;width:auto;vertical-align:middle;flex-shrink:0;" alt="Indus"></div><div class="mbt-label">Download v1.1.0</div></a>
       <!-- <a href="#" class="mbt mbt-s" onclick="closeM()">▶ &nbsp;View on Google Play</a> -->
     </div>
   </div>
@@ -586,8 +607,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="logo-ic">
       <svg viewBox="0 0 18 18" fill="none"><path d="M3 5h12M3 9h12M3 13h7" stroke="var(--cy)" stroke-width="2" stroke-linecap="round"/></svg>
     </div>
-    <span class="logo-tx">OneFiles<span class="logo-ver">_v1.0</span></span>
+    <span class="logo-tx">OneFiles<span class="logo-ver">_v1.1.0</span></span>
   </a>
+
   <button class="hbg" onclick="document.getElementById('nul').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
